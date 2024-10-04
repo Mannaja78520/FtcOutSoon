@@ -89,10 +89,11 @@ public abstract class Robot extends LinearOpMode {
             double Vx = 0.1 * DeltaX;
             double Vy = 0.1 * DeltaY;
 
-            double VFL = (Vx + Vy - omega * (DistanceFB + DistanceLR) / R);
-            double VFR = (Vx - Vy + omega * (DistanceFB + DistanceLR) / R);
-            double VBL = (Vx - Vy - omega * (DistanceFB + DistanceLR) / R);
-            double VBR = (Vx + Vy + omega * (DistanceFB + DistanceLR) / R);
+            double d = Math.max(Math.abs(Vx) + Math.abs(Vy), 1);
+            double VFL = (Vx + Vy - omega * (DistanceFB + DistanceLR) / R) / d;
+            double VFR = (Vx - Vy + omega * (DistanceFB + DistanceLR) / R) / d;
+            double VBL = (Vx - Vy - omega * (DistanceFB + DistanceLR) / R) / d;
+            double VBR = (Vx + Vy + omega * (DistanceFB + DistanceLR) / R) / d;
 //            double yaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
             MovePower(VFL,VFR,VBL, VBR);
             telemetry.addData("XY", "%6f cm %6f cm" , Posx, Posy);
