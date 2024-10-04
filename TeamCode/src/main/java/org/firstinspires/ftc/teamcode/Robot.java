@@ -76,24 +76,24 @@ public abstract class Robot extends LinearOpMode {
         double R = 5.08; //mecanum wheel radius in cm
         double DistanceLR = 33.655;
         double DistanceFB = 28.50;
-        double DeltaX = targetx - Posx;
-        double DeltaY = targety - Posy;
 
-        double Vx = 0.1 * DeltaX;
-        double Vy = 0.1 * DeltaY;
-
-        //
-        double VFL = (Vx + Vy - omega * (DistanceFB + DistanceLR) / R);
-        double VFR = (Vx - Vy + omega * (DistanceFB + DistanceLR) / R);
-        double VBL = (Vx - Vy - omega * (DistanceFB + DistanceLR) / R);
-        double VBR = (Vx + Vy + omega * (DistanceFB + DistanceLR) / R);
         ElapsedTime runtime = new ElapsedTime();
         runtime.reset();
 
 
         while (opModeIsActive()) {
             Odomentry();
-            double yaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
+            double DeltaX = targetx - Posx;
+            double DeltaY = targety - Posy;
+
+            double Vx = 0.1 * DeltaX;
+            double Vy = 0.1 * DeltaY;
+
+            double VFL = (Vx + Vy - omega * (DistanceFB + DistanceLR) / R);
+            double VFR = (Vx - Vy + omega * (DistanceFB + DistanceLR) / R);
+            double VBL = (Vx - Vy - omega * (DistanceFB + DistanceLR) / R);
+            double VBR = (Vx + Vy + omega * (DistanceFB + DistanceLR) / R);
+//            double yaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
             MovePower(VFL,VFR,VBL, VBR);
             telemetry.addData("XY", "%6f cm %6f cm" , Posx, Posy);
             telemetry.update();
