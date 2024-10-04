@@ -153,7 +153,6 @@ public abstract class Robot extends LinearOpMode {
         BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         // SetPower Motors
-
         MovePower(0, 0, 0, 0);
     }
 
