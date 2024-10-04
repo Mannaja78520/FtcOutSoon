@@ -67,8 +67,8 @@ public abstract class Robot extends LinearOpMode {
       double yaw   = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
       Posy += dx * Math.cos(yaw) - dy * Math.sin(yaw);
       Posx += dx * Math.sin(yaw) + dy * Math.cos(yaw);
-
     }
+
     public void move(double tilex, double tiley, double omega, double timeout){
 
         double targetx = tilex * tileSize[0];
@@ -93,13 +93,13 @@ public abstract class Robot extends LinearOpMode {
 
         while (opModeIsActive()) {
             Odomentry();
-            double yaw = -imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
+            double yaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
             MovePower(VFL,VFR,VBL, VBR);
             telemetry.addData("XY", "%6f cm %6f cm" , Posx, Posy);
             telemetry.update();
-            if ((runtime.seconds() >= timeout) ) break;
+            if (Utilize.AtTargetRange(Posx, targetx, 10) && Utilize.AtTargetRange(Posy, targety, 10)) break;
         }
-        Break(0.4);
+        Break(2);
     }
 
 
