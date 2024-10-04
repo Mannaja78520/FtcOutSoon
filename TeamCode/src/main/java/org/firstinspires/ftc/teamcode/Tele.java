@@ -2,14 +2,10 @@ package org.firstinspires.ftc.teamcode;
 
 import static org.firstinspires.ftc.teamcode.Utilize.WrapRads;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-@Config
 @TeleOp(name="Tele")
 public class Tele extends Robot {
 
@@ -27,7 +23,6 @@ public class Tele extends Robot {
                                                         new double[]{0, 0, 0, 0});
 
         // Show FTC Dashboard
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         controller = new Controller(1.6, 0.01, 0.01, 0);
     }
 

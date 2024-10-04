@@ -11,11 +11,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.vision.VisionPortal;
-import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 
 public abstract class Robot extends LinearOpMode {
     public IMU imu;
-    public TfodProcessor tfod;
     public VisionPortal visionPortal;
     public Servo LA, RA, LH, RH, ALL, ARL, IT, DP, ADP;
     public DcMotorEx FL, FR, BL, BR, encoderleft, encoderRight, encoderMid ;
