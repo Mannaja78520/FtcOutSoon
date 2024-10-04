@@ -86,8 +86,8 @@ public abstract class Robot extends LinearOpMode {
             double DeltaX = targetx - Posx;
             double DeltaY = targety - Posy;
 
-            double Vx = 0.1 * DeltaX;
-            double Vy = 0.1 * DeltaY;
+            double Vx = 0.001 * DeltaX;
+            double Vy = 0.001 * DeltaY;
 
             double d = Math.max(Math.abs(Vx) + Math.abs(Vy), 1);
             double VFL = (Vx + Vy - omega * (DistanceFB + DistanceLR) / R) / d;
@@ -141,9 +141,6 @@ public abstract class Robot extends LinearOpMode {
 
         // Set Servo Position
 
-        // Reverse Motors
-        FR.setDirection(DcMotorSimple.Direction.REVERSE);
-        BR.setDirection(DcMotorSimple.Direction.REVERSE);
         // setMode Motors
         FL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         FR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -154,6 +151,11 @@ public abstract class Robot extends LinearOpMode {
         FR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         BL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         BR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        // Reverse Motors
+        FR.setDirection(DcMotorSimple.Direction.REVERSE);
+        BR.setDirection(DcMotorSimple.Direction.REVERSE);
+
         // SetBehavior Motors
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
